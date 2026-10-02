@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>大衛林老師的研究室 - 專家效度問卷評估系統</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@300;400;500;700&display=swap');
+        
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background-color: #f3f4f6;
+        }
+        
+        h1, h2, h3, .serif-font {
+            font-family: 'Noto Serif TC', serif;
+        }
+
+        .drop-zone {
+            transition: all 0.3s ease;
+        }
+        .drop-zone.dragover {
+            background-color: #eff6ff;
+            border-color: #3b82f6;
+        }
+        
+        /* Loading spinner animation */
+        .loader {
+            border-top-color: #2563eb;
+            -webkit-animation: spinner 1.5s linear infinite;
+            animation: spinner 1.5s linear infinite;
+        }
+        @keyframes spinner {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body class="min-h-screen text-gray-800">
+
+    <header class="bg-slate-800 text-white shadow-lg">
+        <div class="max-w-5xl mx-auto px-4 py-6 flex items-center justify-between">
+            <div class="flex items-center gap-4">
+                <div class="bg-blue-600 rounded-full w-12 h-12 flex items-center justify-center text-xl font-bold border-2 border-white">
+                    林
+                </div>
+                <div>
+                    <h1 class="text-2xl font-bold tracking-wider">大衛林老師的研究室</h1>
+                    <p class="text-slate-300 text-sm mt-1">社會科學研究方法 ╳ 長照與輔助科技管理</p>
+                </div>
+            </div>
+            <div class="hidden md:block text-right">
+                <p class="text-sm text-slate-300">APA 7th & 論文格式檢核中心</p>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-4 py-8 grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <div class="md:col-span-1 space-y-6">
+            <div class="bg-white rounded-xl shadow-md p-6 border-t-4 border-blue-600">
+                <h2 class="text-xl font-bold text-slate-800 mb-4 serif-font"><i class="fas fa-chalkboard-teacher text-blue-600 mr-2"></i>老師的叮嚀</h2>
+                <p class="text-sm text-gray-600 leading-relaxed mb-4">
+                    同學你好，我是大衛林老師。在進行專家效度（Content Validity）審查前，我需要先了解你的研究脈絡。
+                </p>
+                <p class="text-sm text-gray-600 leading-relaxed">
+                    請在右方填寫你的研究題目與動機，並上傳你的問卷檔案（支援 PDF 或 Word）。老師會針對<span class="font-semibold text-blue-700">問卷架構、指導語、計分尺度，以及格式是否符合南開科大與 APA 7th 規範</span>進行初步審閱。
+                </p>
+            </div>
+
+            <div class="bg-blue-50 rounded-xl p-5 border border-blue-100">
+                <h3 class="text-md font-bold text-blue-800 mb-2"><i class="fas fa-book-open mr-2"></i>參考規範清單</h3>
+                <ul class="text-sm text-blue-900 space-y-2">
+                    <li class="flex items-start"><i class="fas fa-check-circle mt-1 mr-2 text-blue-500"></i><span>APA-7th-ed-20230312-1+(1).pdf</span></li>
+                    <li class="flex items-start"><i class="fas fa-check-circle mt-1 mr-2 text-blue-500"></i><span>南開科大長照系福祉所碩士學位論文格式製作教學簡報.pdf</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="md:col-span-2 bg-white rounded-xl shadow-md p-6 lg:p-8">
+            <form id="evaluationForm" class="space-y-6">
+                
+                <div>
+                    <label for="researchTitle" class="block text-sm font-semibold text-gray-700 mb-1">你的研究題目是什麼？</label>
+                    <input type="text" id="researchTitle" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-colors" placeholder="例如：運用整合性科技接受模式探討中高齡者對輔助科技之接受度" required>
+                </div>
+
+                <div>
+                    <label for="researchMotivation" class="block text-sm font-semibold text-gray-700 mb-1">請簡述你的研究動機與預期目標 (林老師很看重這個喔！)</label>
+                    <textarea id="researchMotivation" rows="3" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-colors" placeholder="為什麼想做這個題目？希望解決長照或高齡領域的什麼實務問題？" required></textarea>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-semibold text-gray-700 mb-1">上傳專家效度問卷 (Word 或 PDF)</label>
+                    <div id="dropZone" class="drop-zone mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer hover:bg-gray-50">
+                        <div class="space-y-1 text-center">
+                            <i class="fas fa-file-upload text-4xl text-gray-400 mb-3"></i>
+                            <div class="flex text-sm text-gray-600 justify-center">
+                                <label for="fileUpload" class="relative cursor-pointer bg-white rounded-md font-medium text-blue-600 hover:text-blue-500 focus-within:outline-none">
+                                    <span>選擇檔案</span>
+                                    <input id="fileUpload" name="fileUpload" type="file" class="sr-only" accept=".pdf,.doc,.docx" required>
+                                </label>
+                                <p class="pl-1">或將檔案拖曳至此</p>
+                            </div>
+                            <p class="text-xs text-gray-500">PDF, DOC, DOCX (最大 10MB)</p>
+                            <p id="fileNameDisplay" class="text-sm font-semibold text-green-600 mt-2 hidden"></p>
+                        </div>
+                    </div>
+                    <p id="fileError" class="text-red-500 text-sm mt-2 hidden">請上傳您的問卷檔案！</p>
+                </div>
+
+                <div class="pt-2 flex items-center justify-between">
+                    <p id="formError" class="text-red-500 text-sm hidden font-semibold"><i class="fas fa-exclamation-triangle mr-1"></i> 請填寫完整資訊並上傳檔案。</p>
+                    <button type="button" id="submitBtn" class="ml-auto bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg shadow-md transition-colors flex items-center">
+                        <i class="fas fa-paper-plane mr-2"></i> 提交給林老師審閱
+                    </button>
+                </div>
+            </form>
+
+            <!-- Loading Section -->
+            <div id="loadingSection" class="hidden mt-8 text-center py-8">
+                <div class="loader ease-linear rounded-full border-4 border-t-4 border-gray-200 h-12 w-12 mx-auto mb-4"></div>
+                <h3 class="text-lg font-semibold text-slate-700">林老師正在詳讀你的問卷與研究動機...</h3>
+                <p class="text-sm text-gray-500 mt-2">檢核內部一致性、格式規範與適切性中...</p>
+            </div>
+
+            <!-- Results Section -->
+            <div id="resultsSection" class="hidden mt-8 border-t border-gray-200 pt-8 animate-fade-in">
+                <h2 class="text-2xl font-bold text-slate-800 mb-6 serif-font border-l-4 border-blue-600 pl-4">林老師的審閱回饋</h2>
+                
+                <div id="feedbackContent" class="space-y-6 text-gray-700">
+                    <!-- Dynamic content will be injected here via JS -->
+                </div>
+                
+                <div class="mt-8 bg-slate-50 p-6 rounded-lg border border-slate-200">
+                    <h4 class="font-bold text-slate-800 mb-2"><i class="fas fa-comment-dots text-blue-600 mr-2"></i>老師的提問</h4>
+                    <p class="text-sm" id="guidingQuestion"></p>
+                </div>
+
+                <div class="mt-6 text-center">
+                    <button id="resetBtn" class="text-blue-600 hover:text-blue-800 font-semibold underline text-sm transition-colors">
+                        重新修改並上傳另一份問卷
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // DOM Elements
+        const dropZone = document.getElementById('dropZone');
+        const fileUpload = document.getElementById('fileUpload');
+        const fileNameDisplay = document.getElementById('fileNameDisplay');
+        const submitBtn = document.getElementById('submitBtn');
+        const evaluationForm = document.getElementById('evaluationForm');
+        const loadingSection = document.getElementById('loadingSection');
+        const resultsSection = document.getElementById('resultsSection');
+        const feedbackContent = document.getElementById('feedbackContent');
+        const formError = document.getElementById('formError');
+        const fileError = document.getElementById('fileError');
+        const guidingQuestion = document.getElementById('guidingQuestion');
+
+        let currentFile = null;
+
+        // File Drag & Drop Handlers
+        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+            dropZone.addEventListener(eventName, preventDefaults, false);
+        });
+
+        function preventDefaults(e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+
+        ['dragenter', 'dragover'].forEach(eventName => {
+            dropZone.addEventListener(eventName, () => dropZone.classList.add('dragover'), false);
+        });
+
+        ['dragleave', 'drop'].forEach(eventName => {
+            dropZone.addEventListener(eventName, () => dropZone.classList.remove('dragover'), false);
+        });
+
+        dropZone.addEventListener('drop', handleDrop, false);
+
+        function handleDrop(e) {
+            const dt = e.dataTransfer;
+            const files = dt.files;
+            handleFiles(files);
+        }
+
+        fileUpload.addEventListener('change', function() {
+            handleFiles(this.files);
+        });
+
+        function handleFiles(files) {
+            if (files.length > 0) {
+                const file = files[0];
+                const validTypes = ['.pdf', '.doc', '.docx'];
+                const fileExtension = file.name.substring(file.name.lastIndexOf('.')).toLowerCase();
+                
+                if (validTypes.includes(fileExtension)) {
+                    currentFile = file;
+                    fileNameDisplay.textContent = `已選擇檔案：${file.name}`;
+                    fileNameDisplay.classList.remove('hidden');
+                    fileError.classList.add('hidden');
+                } else {
+                    fileError.textContent = '檔案格式不符，請上傳 PDF 或 Word 檔。';
+                    fileError.classList.remove('hidden');
+                    currentFile = null;
+                    fileNameDisplay.classList.add('hidden');
+                }
+            }
+        }
+
+        // Submit Handler
+        submitBtn.addEventListener('click', () => {
+            const title = document.getElementById('researchTitle').value.trim();
+            const motivation = document.getElementById('researchMotivation').value.trim();
+
+            // Validation
+            let isValid = true;
+            if (!title || !motivation) {
+                formError.classList.remove('hidden');
+                isValid = false;
+            } else {
+                formError.classList.add('hidden');
+            }
+
+            if (!currentFile) {
+                fileError.textContent = '請上傳您的問卷檔案！';
+                fileError.classList.remove('hidden');
+                isValid = false;
+            }
+
+            if (!isValid) return;
+
+            // Transition to loading state
+            evaluationForm.style.display = 'none';
+            loadingSection.classList.remove('hidden');
+
+            // Simulate processing time (2.5 seconds)
+            setTimeout(() => {
+                generateFeedback(title, motivation);
+                loadingSection.classList.add('hidden');
+                resultsSection.classList.remove('hidden');
+            }, 2500);
+        });
+
+        // Reset Handler
+        document.getElementById('resetBtn').addEventListener('click', () => {
+            resultsSection.classList.add('hidden');
+            evaluationForm.style.display = 'block';
+            evaluationForm.reset();
+            currentFile = null;
+            fileNameDisplay.classList.add('hidden');
+            formError.classList.add('hidden');
+            fileError.classList.add('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Generate Professor Lin's Feedback
+        function generateFeedback(title, motivation) {
+            // Determine domain based on keywords to make response dynamic
+            let isLTC = motivation.includes('長照') || motivation.includes('高齡') || motivation.includes('老人');
+            let isTech = motivation.includes('科技') || motivation.includes('輔助') || motivation.includes('系統');
+            
+            let domainSpecificFeedback = "";
+            if (isLTC && isTech) {
+                domainSpecificFeedback = "針對你將科技導入長照領域的想法，特別提醒你在問卷中，要考慮到受試專家可能包含『第一線照顧服務員』與『資訊工程師』，這兩者的專業語彙不同，問卷題目的用詞必須力求白話且無歧義，避免造成理解上的誤差。";
+            } else if (isLTC) {
+                domainSpecificFeedback = "長照領域的研究，政策面與實務面的落差往往是關鍵。請確認你的題項是否有涵蓋到現行法規（如長照2.0）或機構實際經營的限制，這樣專家在評分時才能給予最切合實務的效度檢核。";
+            } else {
+                domainSpecificFeedback = "不管你的具體研究對象為何，社會科學的核心在於『人』。請確保問卷題項的設計，能夠真實反映出受試者的心理或行為特質。";
+            }
+
+            const htmlContent = `
+                <div class="prose prose-blue max-w-none">
+                    <p class="leading-relaxed">
+                        同學，我仔細看了你的研究主題<strong>「${title}」</strong>以及你的研究動機。
+                        你提到：「<em class="text-gray-600">${motivation}</em>」，這個出發點非常有學術與實務價值。我們做研究，不能只是為了解決統計數字的問題，更是為了解決社會真實存在的問題。
+                    </p>
+                    
+                    <p class="mt-4">${domainSpecificFeedback}</p>
+
+                    <h3 class="text-lg font-bold text-blue-800 mt-6 mb-3 border-b border-blue-200 pb-2">📋 專家效度問卷編製檢核建議</h3>
+                    
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <span class="bg-blue-100 text-blue-700 rounded-full w-6 h-6 flex items-center justify-center mr-3 mt-0.5 flex-shrink-0 font-bold text-sm">1</span>
+                            <div>
+                                <strong class="text-slate-800">指導語的清晰度：</strong><br>
+                                專家效度問卷的開頭，是否清楚說明了你的研究目的、名詞操作性定義？請記住，專家很忙碌，如果沒有清晰的「操作性定義」，他們無法判斷你的題項是否具有「內容效度」。請提供一個範例題讓專家參考。
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="bg-blue-100 text-blue-700 rounded-full w-6 h-6 flex items-center justify-center mr-3 mt-0.5 flex-shrink-0 font-bold text-sm">2</span>
+                            <div>
+                                <strong class="text-slate-800">CVI (Content Validity Index) 評分尺度設計：</strong><br>
+                                你的問卷是否採用了適切的評分法？通常我們建議針對每一題提供 <strong>1 (非常不適切) 到 4 (非常適切)</strong> 的四點量表，避免中間值。同時，每一題或每一個構面後，<span class="text-red-600 font-semibold">務必留有「修改意見/開放性文字欄」</span>，這才是專家效度最有價值的地方！日後收集回來，我們可以使用 SPSS 或 Excel 快速計算 I-CVI 與 S-CVI。
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="bg-blue-100 text-blue-700 rounded-full w-6 h-6 flex items-center justify-center mr-3 mt-0.5 flex-shrink-0 font-bold text-sm">3</span>
+                            <div>
+                                <strong class="text-slate-800">遵循 APA 7th 格式與引用規範：</strong><br>
+                                依據你提供的 <code>APA-7th-ed-20230312-1+(1).pdf</code>，如果問卷指導語中引用了其他學者的理論（例如 Ajzen 的計畫行為理論），請確保文獻引用格式正確。例如：三位作者以上，第一次引用就只需列出第一位作者加「等」(中文) 或「et al.」(英文)。
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="bg-blue-100 text-blue-700 rounded-full w-6 h-6 flex items-center justify-center mr-3 mt-0.5 flex-shrink-0 font-bold text-sm">4</span>
+                            <div>
+                                <strong class="text-slate-800">排版與南開科大論文規範相符：</strong><br>
+                                請參照 <code>南開科大長照系福祉所碩士學位論文格式製作教學簡報.pdf</code> 的規範來排版你的問卷。確認邊界設定（上下左右為 4, 2, 4, 2 公分），段落設定為 1.5 倍行高。中文字型使用<strong>標楷體</strong>，英文字型使用 <strong>Times New Roman</strong>。良好的排版能展現你對研究的嚴謹態度，也能讓專家閱讀起來更舒適。
+                            </div>
+                        </li>
+                    </ul>
+
+                    <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 mt-6">
+                        <p class="text-sm text-yellow-800 font-semibold"><i class="fas fa-lightbulb mr-2"></i>大衛林老師的統計小教室：</p>
+                        <p class="text-sm text-yellow-800 mt-1">
+                            等你收回專家問卷後，記得我們上課教過的：若專家給予 3 分或 4 分，我們視為該題適當。計算每一題的 I-CVI，標準通常要大於 0.78 才算及格。不合格的題目，我們就必須依據專家的文字意見進行刪除或大幅修正。
+                        </p>
+                    </div>
+                </div>
+            `;
+
+            feedbackContent.innerHTML = htmlContent;
+
+            // Generate a guiding question based on the input
+            let question = `關於我們剛剛提到的「名詞操作性定義」，你認為在你的研究「${title}」中，哪一個變項是最難界定，可能最需要專家幫忙確認的？為什麼？`;
+            guidingQuestion.textContent = question;
+        }
+    </script>
+</body>
+</html>
