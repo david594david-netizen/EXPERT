@@ -84,6 +84,28 @@
                     <li class="flex items-start text-xs text-blue-700 ml-6">重點參閱：肆、問卷編製的方法（第4-6頁）及量尺設計（第10-11頁）</li>
                 </ul>
             </div>
+            
+            <div class="bg-indigo-50 rounded-xl p-5 border border-indigo-100 mt-6">
+                <h3 class="text-md font-bold text-indigo-800 mb-2"><i class="fas fa-file-alt mr-2"></i>論文格式與引用小幫手</h3>
+                <div class="space-y-3 text-sm text-indigo-900">
+                    <div>
+                        <p class="font-semibold border-b border-indigo-200 pb-1 mb-1">🎓 南開科大福祉所格式精要：</p>
+                        <ul class="list-disc ml-5 space-y-1 text-xs">
+                            <li>版面設定：上 4cm、下 2cm、左 4cm、右 2cm。</li>
+                            <li>行距：章節與內文間距 1.5 倍行高，前後各 5pt。</li>
+                            <li>字體：中文標楷體，英文 Times New Roman。</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <p class="font-semibold border-b border-indigo-200 pb-1 mb-1">📚 APA 7th 參考文獻重點：</p>
+                        <ul class="list-disc ml-5 space-y-1 text-xs">
+                            <li>作者 3 人以上：文中引用僅列第一位，後加「等 (et al.)」。</li>
+                            <li>作者 20 人內：參考文獻列表需列出**所有**作者。</li>
+                            <li>英文文獻：書名與期刊名稱需為<span class="italic">斜體</span>。</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div class="md:col-span-2 bg-white rounded-xl shadow-md p-6 lg:p-8">
@@ -301,25 +323,25 @@
             
             // 嘗試過濾掉明顯不像題目的標題或雜訊
             const possibleQuestions = lines.filter(line => 
-                /^\d+[\.、]/.test(line) || // 數字開頭如 1. 或 1、
-                line.includes('是否') || 
-                line.includes('覺得') || 
-                line.includes('認為') ||
-                line.includes('同意') ||
-                line.includes('會')
-            ).slice(0, 10); // 取前10題避免畫面過長
+            /^\d+[\.、]/.test(line) || // 數字開頭如 1. 或 1、
+            line.includes('是否') || 
+            line.includes('覺得') || 
+            line.includes('認為') ||
+            line.includes('同意') ||
+            line.includes('會')
+        ).slice(0, 10); // 取前10題避免畫面過長
 
-            if (possibleQuestions.length === 0) {
-                return [{
-                    question: "無法從文件中自動萃取明確的題項結構。",
-                    isGood: false,
-                    feedbacks: ["請確認上傳的檔案包含編號明確的題項 (例如: 1. 我覺得...)，或句子結尾有完整標點符號。"]
-                }];
-            }
+        if (possibleQuestions.length === 0) {
+            return [{
+                question: "無法從文件中自動萃取明確的題項結構。",
+                isGood: false,
+                feedbacks: ["請確認上傳的檔案包含編號明確的題項 (例如: 1. 我覺得...)，或句子結尾有完整標點符號。"]
+            }];
+        }
 
-            const results = [];
-            
-            // 王俊明教授的啟發式掃描規則
+        const results = [];
+        
+        // 王俊明教授的啟發式掃描規則
             const rules = [
                 {
                     regex: /(並且|而且|以及|加上|同時)/,
