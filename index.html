@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>大衛林老師的研究室 - 專家效度問卷評估系統</title>
+    <title>大衛林老師的研究室 - 專家效度問卷評估系統(王俊明準則版)</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
@@ -26,7 +26,6 @@
             border-color: #3b82f6;
         }
         
-        /* Loading spinner animation */
         .loader {
             border-top-color: #2563eb;
             -webkit-animation: spinner 1.5s linear infinite;
@@ -48,11 +47,11 @@
                 </div>
                 <div>
                     <h1 class="text-2xl font-bold tracking-wider">大衛林老師的研究室</h1>
-                    <p class="text-slate-300 text-sm mt-1">社會科學研究方法 ╳ 長照與輔助科技管理</p>
+                    <p class="text-slate-300 text-sm mt-1">社會科學研究方法 ╳ 量表編製檢核中心</p>
                 </div>
             </div>
             <div class="hidden md:block text-right">
-                <p class="text-sm text-slate-300">APA 7th & 論文格式檢核中心</p>
+                <p class="text-sm text-slate-300 font-semibold text-yellow-400">系統核心：王俊明問卷設計原則</p>
             </div>
         </div>
     </header>
@@ -63,18 +62,18 @@
             <div class="bg-white rounded-xl shadow-md p-6 border-t-4 border-blue-600">
                 <h2 class="text-xl font-bold text-slate-800 mb-4 serif-font"><i class="fas fa-chalkboard-teacher text-blue-600 mr-2"></i>老師的叮嚀</h2>
                 <p class="text-sm text-gray-600 leading-relaxed mb-4">
-                    同學你好，我是大衛林老師。在進行專家效度（Content Validity）審查前，我需要先了解你的研究脈絡。
+                    同學你好！這次我們將暫時放下 APA 格式，專注於問卷本身的「信度與效度」基石。
                 </p>
                 <p class="text-sm text-gray-600 leading-relaxed">
-                    請在右方填寫你的研究題目與動機，並上傳你的問卷檔案（支援 PDF 或 Word）。老師會針對<span class="font-semibold text-blue-700">問卷架構、指導語、計分尺度，以及格式是否符合南開科大與 APA 7th 規範</span>進行初步審閱。
+                    請在右方填寫研究題目並上傳你的專家效度問卷檔案。老師會嚴格依照<span class="font-semibold text-blue-700">王俊明教授的六大編製原則</span>（如：單一觀念、避免暗示、量尺設計等）為你的每一個題項把關，確保你的問卷能精準測量研究變項。
                 </p>
             </div>
 
             <div class="bg-blue-50 rounded-xl p-5 border border-blue-100">
-                <h3 class="text-md font-bold text-blue-800 mb-2"><i class="fas fa-book-open mr-2"></i>參考規範清單</h3>
+                <h3 class="text-md font-bold text-blue-800 mb-2"><i class="fas fa-book-open mr-2"></i>本系統依據之文獻</h3>
                 <ul class="text-sm text-blue-900 space-y-2">
-                    <li class="flex items-start"><i class="fas fa-check-circle mt-1 mr-2 text-blue-500"></i><span>APA-7th-ed-20230312-1+(1).pdf</span></li>
-                    <li class="flex items-start"><i class="fas fa-check-circle mt-1 mr-2 text-blue-500"></i><span>南開科大長照系福祉所碩士學位論文格式製作教學簡報.pdf</span></li>
+                    <li class="flex items-start"><i class="fas fa-check-circle mt-1 mr-2 text-blue-500"></i><span class="font-semibold">問卷設計方法-王俊明.pdf</span></li>
+                    <li class="flex items-start text-xs text-blue-700 ml-6">重點參閱：肆、問卷編製的方法（第4-6頁）及量尺設計（第10-11頁）</li>
                 </ul>
             </div>
         </div>
@@ -83,17 +82,12 @@
             <form id="evaluationForm" class="space-y-6">
                 
                 <div>
-                    <label for="researchTitle" class="block text-sm font-semibold text-gray-700 mb-1">你的研究題目是什麼？</label>
-                    <input type="text" id="researchTitle" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-colors" placeholder="例如：運用整合性科技接受模式探討中高齡者對輔助科技之接受度" required>
+                    <label for="researchTitle" class="block text-sm font-semibold text-gray-700 mb-1">你的研究題目或測量構面是什麼？</label>
+                    <input type="text" id="researchTitle" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-colors" placeholder="例如：中高齡者對輔助科技之『知覺有用性』與『知覺易用性』" required>
                 </div>
 
                 <div>
-                    <label for="researchMotivation" class="block text-sm font-semibold text-gray-700 mb-1">請簡述你的研究動機與預期目標 (林老師很看重這個喔！)</label>
-                    <textarea id="researchMotivation" rows="3" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-colors" placeholder="為什麼想做這個題目？希望解決長照或高齡領域的什麼實務問題？" required></textarea>
-                </div>
-
-                <div>
-                    <label class="block text-sm font-semibold text-gray-700 mb-1">上傳專家效度問卷 (Word 或 PDF)</label>
+                    <label class="block text-sm font-semibold text-gray-700 mb-1">上傳待審閱的問卷 (Word 或 PDF)</label>
                     <div id="dropZone" class="drop-zone mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer hover:bg-gray-50">
                         <div class="space-y-1 text-center">
                             <i class="fas fa-file-upload text-4xl text-gray-400 mb-3"></i>
@@ -104,7 +98,7 @@
                                 </label>
                                 <p class="pl-1">或將檔案拖曳至此</p>
                             </div>
-                            <p class="text-xs text-gray-500">PDF, DOC, DOCX (最大 10MB)</p>
+                            <p class="text-xs text-gray-500">PDF, DOC, DOCX</p>
                             <p id="fileNameDisplay" class="text-sm font-semibold text-green-600 mt-2 hidden"></p>
                         </div>
                     </div>
@@ -112,9 +106,9 @@
                 </div>
 
                 <div class="pt-2 flex items-center justify-between">
-                    <p id="formError" class="text-red-500 text-sm hidden font-semibold"><i class="fas fa-exclamation-triangle mr-1"></i> 請填寫完整資訊並上傳檔案。</p>
+                    <p id="formError" class="text-red-500 text-sm hidden font-semibold"><i class="fas fa-exclamation-triangle mr-1"></i> 請填寫研究構面並上傳檔案。</p>
                     <button type="button" id="submitBtn" class="ml-auto bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg shadow-md transition-colors flex items-center">
-                        <i class="fas fa-paper-plane mr-2"></i> 提交給林老師審閱
+                        <i class="fas fa-search-plus mr-2"></i> 執行王俊明準則分析
                     </button>
                 </div>
             </form>
@@ -122,26 +116,26 @@
             <!-- Loading Section -->
             <div id="loadingSection" class="hidden mt-8 text-center py-8">
                 <div class="loader ease-linear rounded-full border-4 border-t-4 border-gray-200 h-12 w-12 mx-auto mb-4"></div>
-                <h3 class="text-lg font-semibold text-slate-700">林老師正在詳讀你的問卷與研究動機...</h3>
-                <p class="text-sm text-gray-500 mt-2">檢核內部一致性、格式規範與適切性中...</p>
+                <h3 class="text-lg font-semibold text-slate-700">林老師正在逐題拆解你的問卷...</h3>
+                <p class="text-sm text-gray-500 mt-2">比對《問卷設計方法-王俊明.pdf》之編題原則中...</p>
             </div>
 
             <!-- Results Section -->
             <div id="resultsSection" class="hidden mt-8 border-t border-gray-200 pt-8 animate-fade-in">
-                <h2 class="text-2xl font-bold text-slate-800 mb-6 serif-font border-l-4 border-blue-600 pl-4">林老師的審閱回饋</h2>
+                <h2 class="text-2xl font-bold text-slate-800 mb-6 serif-font border-l-4 border-blue-600 pl-4">林老師的題項修訂意見</h2>
                 
                 <div id="feedbackContent" class="space-y-6 text-gray-700">
-                    <!-- Dynamic content will be injected here via JS -->
+                    <!-- Dynamic content -->
                 </div>
                 
-                <div class="mt-8 bg-slate-50 p-6 rounded-lg border border-slate-200">
-                    <h4 class="font-bold text-slate-800 mb-2"><i class="fas fa-comment-dots text-blue-600 mr-2"></i>老師的提問</h4>
-                    <p class="text-sm" id="guidingQuestion"></p>
+                <div class="mt-8 bg-slate-50 p-6 rounded-lg border border-slate-200 shadow-inner">
+                    <h4 class="font-bold text-slate-800 mb-2"><i class="fas fa-comment-dots text-blue-600 mr-2"></i>大衛林老師的提問</h4>
+                    <p class="text-sm leading-relaxed" id="guidingQuestion"></p>
                 </div>
 
                 <div class="mt-6 text-center">
                     <button id="resetBtn" class="text-blue-600 hover:text-blue-800 font-semibold underline text-sm transition-colors">
-                        重新修改並上傳另一份問卷
+                        重新修改並上傳新版問卷
                     </button>
                 </div>
             </div>
@@ -149,7 +143,6 @@
     </main>
 
     <script>
-        // DOM Elements
         const dropZone = document.getElementById('dropZone');
         const fileUpload = document.getElementById('fileUpload');
         const fileNameDisplay = document.getElementById('fileNameDisplay');
@@ -164,7 +157,6 @@
 
         let currentFile = null;
 
-        // File Drag & Drop Handlers
         ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
             dropZone.addEventListener(eventName, preventDefaults, false);
         });
@@ -202,11 +194,11 @@
                 
                 if (validTypes.includes(fileExtension)) {
                     currentFile = file;
-                    fileNameDisplay.textContent = `已選擇檔案：${file.name}`;
+                    fileNameDisplay.textContent = `已載入：${file.name} (準備進行題項檢核)`;
                     fileNameDisplay.classList.remove('hidden');
                     fileError.classList.add('hidden');
                 } else {
-                    fileError.textContent = '檔案格式不符，請上傳 PDF 或 Word 檔。';
+                    fileError.textContent = '請上傳 PDF 或 Word 檔。';
                     fileError.classList.remove('hidden');
                     currentFile = null;
                     fileNameDisplay.classList.add('hidden');
@@ -214,14 +206,11 @@
             }
         }
 
-        // Submit Handler
         submitBtn.addEventListener('click', () => {
             const title = document.getElementById('researchTitle').value.trim();
-            const motivation = document.getElementById('researchMotivation').value.trim();
 
-            // Validation
             let isValid = true;
-            if (!title || !motivation) {
+            if (!title) {
                 formError.classList.remove('hidden');
                 isValid = false;
             } else {
@@ -236,19 +225,16 @@
 
             if (!isValid) return;
 
-            // Transition to loading state
             evaluationForm.style.display = 'none';
             loadingSection.classList.remove('hidden');
 
-            // Simulate processing time (2.5 seconds)
             setTimeout(() => {
-                generateFeedback(title, motivation);
+                generateFeedback(title);
                 loadingSection.classList.add('hidden');
                 resultsSection.classList.remove('hidden');
-            }, 2500);
+            }, 2000);
         });
 
-        // Reset Handler
         document.getElementById('resetBtn').addEventListener('click', () => {
             resultsSection.classList.add('hidden');
             evaluationForm.style.display = 'block';
@@ -260,67 +246,61 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
 
-        // Generate Professor Lin's Feedback
-        function generateFeedback(title, motivation) {
-            // Determine domain based on keywords to make response dynamic
-            let isLTC = motivation.includes('長照') || motivation.includes('高齡') || motivation.includes('老人');
-            let isTech = motivation.includes('科技') || motivation.includes('輔助') || motivation.includes('系統');
-            
-            let domainSpecificFeedback = "";
-            if (isLTC && isTech) {
-                domainSpecificFeedback = "針對你將科技導入長照領域的想法，特別提醒你在問卷中，要考慮到受試專家可能包含『第一線照顧服務員』與『資訊工程師』，這兩者的專業語彙不同，問卷題目的用詞必須力求白話且無歧義，避免造成理解上的誤差。";
-            } else if (isLTC) {
-                domainSpecificFeedback = "長照領域的研究，政策面與實務面的落差往往是關鍵。請確認你的題項是否有涵蓋到現行法規（如長照2.0）或機構實際經營的限制，這樣專家在評分時才能給予最切合實務的效度檢核。";
-            } else {
-                domainSpecificFeedback = "不管你的具體研究對象為何，社會科學的核心在於『人』。請確保問卷題項的設計，能夠真實反映出受試者的心理或行為特質。";
-            }
-
+        function generateFeedback(title) {
             const htmlContent = `
                 <div class="prose prose-blue max-w-none">
                     <p class="leading-relaxed">
-                        同學，我仔細看了你的研究主題<strong>「${title}」</strong>以及你的研究動機。
-                        你提到：「<em class="text-gray-600">${motivation}</em>」，這個出發點非常有學術與實務價值。我們做研究，不能只是為了解決統計數字的問題，更是為了解決社會真實存在的問題。
+                        同學，我已經依照 <strong>王俊明教授的《問卷與量表的編製及分析方法》</strong>，針對你上傳的「${title}」問卷題項進行了系統性掃描。以下是我挑出的幾個常見地雷與修訂建議：
                     </p>
                     
-                    <p class="mt-4">${domainSpecificFeedback}</p>
-
-                    <h3 class="text-lg font-bold text-blue-800 mt-6 mb-3 border-b border-blue-200 pb-2">📋 專家效度問卷編製檢核建議</h3>
+                    <h3 class="text-lg font-bold text-blue-800 mt-6 mb-3 border-b border-blue-200 pb-2">📋 題項修訂具體建議 (依據王俊明準則)</h3>
                     
-                    <ul class="space-y-4">
-                        <li class="flex items-start">
-                            <span class="bg-blue-100 text-blue-700 rounded-full w-6 h-6 flex items-center justify-center mr-3 mt-0.5 flex-shrink-0 font-bold text-sm">1</span>
-                            <div>
-                                <strong class="text-slate-800">指導語的清晰度：</strong><br>
-                                專家效度問卷的開頭，是否清楚說明了你的研究目的、名詞操作性定義？請記住，專家很忙碌，如果沒有清晰的「操作性定義」，他們無法判斷你的題項是否具有「內容效度」。請提供一個範例題讓專家參考。
-                            </div>
-                        </li>
-                        <li class="flex items-start">
-                            <span class="bg-blue-100 text-blue-700 rounded-full w-6 h-6 flex items-center justify-center mr-3 mt-0.5 flex-shrink-0 font-bold text-sm">2</span>
-                            <div>
-                                <strong class="text-slate-800">CVI (Content Validity Index) 評分尺度設計：</strong><br>
-                                你的問卷是否採用了適切的評分法？通常我們建議針對每一題提供 <strong>1 (非常不適切) 到 4 (非常適切)</strong> 的四點量表，避免中間值。同時，每一題或每一個構面後，<span class="text-red-600 font-semibold">務必留有「修改意見/開放性文字欄」</span>，這才是專家效度最有價值的地方！日後收集回來，我們可以使用 SPSS 或 Excel 快速計算 I-CVI 與 S-CVI。
-                            </div>
-                        </li>
-                        <li class="flex items-start">
-                            <span class="bg-blue-100 text-blue-700 rounded-full w-6 h-6 flex items-center justify-center mr-3 mt-0.5 flex-shrink-0 font-bold text-sm">3</span>
-                            <div>
-                                <strong class="text-slate-800">遵循 APA 7th 格式與引用規範：</strong><br>
-                                依據你提供的 <code>APA-7th-ed-20230312-1+(1).pdf</code>，如果問卷指導語中引用了其他學者的理論（例如 Ajzen 的計畫行為理論），請確保文獻引用格式正確。例如：三位作者以上，第一次引用就只需列出第一位作者加「等」(中文) 或「et al.」(英文)。
-                            </div>
-                        </li>
-                        <li class="flex items-start">
-                            <span class="bg-blue-100 text-blue-700 rounded-full w-6 h-6 flex items-center justify-center mr-3 mt-0.5 flex-shrink-0 font-bold text-sm">4</span>
-                            <div>
-                                <strong class="text-slate-800">排版與南開科大論文規範相符：</strong><br>
-                                請參照 <code>南開科大長照系福祉所碩士學位論文格式製作教學簡報.pdf</code> 的規範來排版你的問卷。確認邊界設定（上下左右為 4, 2, 4, 2 公分），段落設定為 1.5 倍行高。中文字型使用<strong>標楷體</strong>，英文字型使用 <strong>Times New Roman</strong>。良好的排版能展現你對研究的嚴謹態度，也能讓專家閱讀起來更舒適。
-                            </div>
-                        </li>
-                    </ul>
+                    <div class="space-y-5">
+                        <!-- 準則一 -->
+                        <div class="bg-white border border-gray-200 rounded-lg p-4 shadow-sm">
+                            <h4 class="font-bold text-red-600 mb-2"><i class="fas fa-times-circle mr-2"></i>違反「每個問題只涵蓋一個觀念」原則</h4>
+                            <p class="text-sm text-gray-700 bg-gray-50 p-2 rounded mb-2"><strong>原題項範例：</strong>「當您使用這項長照設備時，是否覺得操作介面簡單且不容易損壞？」</p>
+                            <p class="text-sm text-gray-600 mb-2"><strong>老師點評：</strong>這就是王老師書中提到最忌諱的「雙重問題 (Double-barreled)」。如果長輩覺得簡單但很容易壞，他該填同意還是不同意？</p>
+                            <p class="text-sm text-green-700 font-semibold"><i class="fas fa-arrow-right mr-1"></i> 修正建議：拆成兩題。</p>
+                            <ul class="text-sm text-green-700 ml-5 list-disc mt-1">
+                                <li>「我覺得這項長照設備的操作介面很簡單。」</li>
+                                <li>「我覺得這項長照設備的機體堅固不容易損壞。」</li>
+                            </ul>
+                        </div>
+
+                        <!-- 準則二 -->
+                        <div class="bg-white border border-gray-200 rounded-lg p-4 shadow-sm">
+                            <h4 class="font-bold text-red-600 mb-2"><i class="fas fa-times-circle mr-2"></i>違反「避免主觀及情緒化字眼、不具暗示性」原則</h4>
+                            <p class="text-sm text-gray-700 bg-gray-50 p-2 rounded mb-2"><strong>原題項範例：</strong>「現在許多護理人員都被血汗壓榨，您贊成引入機器人來減輕這種不人道的負擔嗎？」</p>
+                            <p class="text-sm text-gray-600 mb-2"><strong>老師點評：</strong>「血汗壓榨」、「不人道」都是情緒字眼，這會產生強烈的「暗示作用」，強迫受試者只能選同意。王教授在文中第5頁特別提醒要用「客觀、中性」的字眼。</p>
+                            <p class="text-sm text-green-700 font-semibold"><i class="fas fa-arrow-right mr-1"></i> 修正建議：改為中性描述。</p>
+                            <ul class="text-sm text-green-700 ml-5 list-disc mt-1">
+                                <li>「您是否贊成在病房中引入照護機器人，以協助護理人員的日常工作？」</li>
+                            </ul>
+                        </div>
+
+                        <!-- 準則三 -->
+                        <div class="bg-white border border-gray-200 rounded-lg p-4 shadow-sm">
+                            <h4 class="font-bold text-red-600 mb-2"><i class="fas fa-times-circle mr-2"></i>違反「問題的選項應清楚界定」原則</h4>
+                            <p class="text-sm text-gray-700 bg-gray-50 p-2 rounded mb-2"><strong>基本資料選項範例：</strong>(1) 3萬以下 (2) 3萬-4萬 (3) 4萬-5萬 (4) 5萬以上</p>
+                            <p class="text-sm text-gray-600 mb-2"><strong>老師點評：</strong>這是新手常犯的錯！如果受試者剛好月入4萬，他要選 (2) 還是 (3)？這犯了選項重疊的錯誤。</p>
+                            <p class="text-sm text-green-700 font-semibold"><i class="fas fa-arrow-right mr-1"></i> 修正建議：確保選項互斥。</p>
+                            <ul class="text-sm text-green-700 ml-5 list-disc mt-1">
+                                <li>(1) 29,999元(含)以下 (2) 30,000元至39,999元 (3) 40,000元至49,999元 (4) 50,000元(含)以上</li>
+                            </ul>
+                        </div>
+                    </div>
 
                     <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 mt-6">
-                        <p class="text-sm text-yellow-800 font-semibold"><i class="fas fa-lightbulb mr-2"></i>大衛林老師的統計小教室：</p>
-                        <p class="text-sm text-yellow-800 mt-1">
-                            等你收回專家問卷後，記得我們上課教過的：若專家給予 3 分或 4 分，我們視為該題適當。計算每一題的 I-CVI，標準通常要大於 0.78 才算及格。不合格的題目，我們就必須依據專家的文字意見進行刪除或大幅修正。
+                        <p class="text-sm text-yellow-800 font-bold mb-2"><i class="fas fa-star mr-2"></i>林老師的私房秘笈：量尺的呈現方式 (王俊明, p.10-11)</p>
+                        <p class="text-sm text-yellow-800">
+                            很多同學喜歡在五點量表上寫「非常不同意(1)、不同意(2)、沒意見(3)...」。但王俊明教授特別指出，這種寫法语義上並非「等距」，直接加權計分其實不完全符合統計原則。
+                            <br><br>
+                            <strong>他建議的最佳做法是：只標示兩端語意，中間保留數字！</strong><br>
+                            例如：<br>
+                            <span class="font-mono bg-white px-2 py-1 rounded inline-block mt-1 border border-yellow-200">非常不同意 &nbsp; 1 &nbsp; 2 &nbsp; 3 &nbsp; 4 &nbsp; 5 &nbsp; 非常同意</span>
+                            <br><br>
+                            請在給專家的效度問卷中，也向專家說明你將採用這種量尺設計。
                         </p>
                     </div>
                 </div>
@@ -328,8 +308,7 @@
 
             feedbackContent.innerHTML = htmlContent;
 
-            // Generate a guiding question based on the input
-            let question = `關於我們剛剛提到的「名詞操作性定義」，你認為在你的研究「${title}」中，哪一個變項是最難界定，可能最需要專家幫忙確認的？為什麼？`;
+            let question = `同學，你目前自己編製的「${title}」問卷中，有沒有哪一題是你寫完覺得「好像有點冗長」或者「感覺同時問了兩件事情」，但你不知該如何套用『單一觀念原則』來拆解的？你可以直接把那一題貼在我們接下來的對話框裡，我們馬上來實戰修改！`;
             guidingQuestion.textContent = question;
         }
     </script>
